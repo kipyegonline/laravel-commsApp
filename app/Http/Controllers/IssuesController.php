@@ -25,7 +25,12 @@ class IssuesController extends Controller
           $issues=DB::DELETE($q);
           return \response()->json($issues);
               break;
-          
+         case "fetchSelectedIssue":
+             $sql="SELECT a.*, b.altName as dept FROM comms_issues a
+             join comms_departments b on  a.userdept =b.id
+             WHERE a.userdept=$id ORDER BY a.issueCount";
+             $issues=DB::select($sql);
+             return response()->json($issues);
           default:
               # code...
               break;
@@ -52,6 +57,9 @@ class IssuesController extends Controller
     public function store(Request $request)
     {
         //
+      
+        $sql="INSERT INTO comms_issues (issue,altId, userdept) VALUES(:issue,:altId, :userdept)";
+        echo DB::insert($sql,[":issue"=>$request->issue,":altId"=>$request->altId, ":userdept"=>$request->userdept]);
     }
 
     /**

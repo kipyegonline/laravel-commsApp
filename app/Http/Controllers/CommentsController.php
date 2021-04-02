@@ -27,11 +27,11 @@ class CommentsController extends Controller
             ":postId"=>request()->post_id,
             ":comment"=>request()->comment,
             ":uuid"=>request()->uuid,
-            ":addedon"=>request()->addedon]); 
-   
+            ":addedon"=>request()->addedEn]); 
+   echo $res;
               break;
         case "editComment":
-               print_r(request()->all());
+              
                $query="UPDATE comms_comments 
                     set comment=:comment,
                     addedon=:addedon, edited=1
@@ -40,7 +40,7 @@ class CommentsController extends Controller
                         ":comment"=> request()->edit,
                         "addedon"=>request()->addedEn,
                         ":altId"=>request()->id]);
-                      
+                      echo $res;
             break;
         case "deleteComment":
            $id=request()->id;

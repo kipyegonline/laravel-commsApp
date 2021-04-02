@@ -18,63 +18,39 @@ use App\Http\MiddleWare\Novemberware;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// posts
 Route::view("/","out.index");
 Route::view("/posts","out.posts");
 Route::get("/posts/{id}",["\App\Http\Controllers\MashujaaDay","show"]);
-Route::view("/post/{id}","out.post");
+Route::view("/post/{id}","out.post.[id]");
 Route::get("/posts/{q}/{id}/{uuid?}",["\App\Http\Controllers\MashujaaDay","ajax"]);
-
+Route::post("/posts/addposts", ["\App\Http\Controllers\MashujaaDay","store"]);
+//users
 Route::view("/users","out.users");
+Route::view("/user","out.user");
 Route::get("/users/{user}",["\App\Http\Controllers\UsersController","ajax"]);
+Route::post("/users/{user}",["\App\Http\Controllers\UsersController","store"]);
+//departments
 Route::view("/add-departments","out.add-departments");
+Route::view("/department","out.department");
 Route::get("/departments/{user}/{q?}",["\App\Http\Controllers\DepartmentsController","ajax"]);
 Route::post("/departments/{user}/{q?}",["\App\Http\Controllers\DepartmentsController","create"]);
-
+//issues
 Route::view("/issues","out.issues");
 Route::get("/issues/{query}/{altId?}",[IssuesController::class,"index"]);
+Route::post("/issues/{query}/{altId?}",[IssuesController::class,"store"]);
 Route::view("/login","out.login");
 Route::view("/add-post","out.add-post");
-// commemnts
+// comments
 Route::post("/comments/{id}",["\App\Http\Controllers\CommentsController","index"]);
 
+//login
 
-Route::get('/about', function () {
+Route::POST("/handlelogin",["\App\Http\Controllers\UsersController","handleLogin"]);
+Route::POST("/reset-password",["\App\Http\Controllers\UsersController","resetPassword"]);
+Route::get("/reset-link/{link}",["\App\Http\Controllers\UsersController","resetPasswordLink"]);
+Route::POST("/update-password",["\App\Http\Controllers\UsersController","updatePassword"]);
 
-   $User=[
-       ["name"=>"Vince","locale"=>"Nairobi"],
-   ["name"=>"Jules","locale"=>"Nakuru"],
-   ["name"=>"Joy","locale"=>"Machakos"]
-   ];
-     $name="Jules";
-      $users = DB::table('comms_departments')->get();
-   $props=["User"=>$User,
-   "title"=>"my friends.",
-   "user"=>$name,
-   "city" =>request("city"),
-   "users"=>$users];
- 
-   return view('about',$props);
-});
-Route::POST("/handlelogin",function(){
-   $email=request()->input("email");
-  
-return response()->json(["user"=>request()->input("email"),"status"=>200]);
-});
-
-Route::get("/leah/{id}",["\App\Http\Controllers\MashujaaDay","show"]);
-
-Route::get("/lyft",[LyftController::class,"index"]);
-Route::get("/fetch",function(){
-    $users = DB::table('comms_departments')->get();
-   return view("fetch",["fetch"=>$users]);
-});
-Route::get("/role",["middleware"=>"Role:editor","uses"=>"App\Http\Controllers\TestController@index" ]);
-
-Route::get("/tailwind/{name?}",[CommsController::class,'index']);
-Route::get("/mashujaa",["\App\Http\Controllers\MashujaaDay","index"]);
-Route::get("/attic",[MyAttic::class,"index"]);
-Route::get("/attic/{name}",[MyAttic::class,"update"]);
-    
 //[commsController::class,'index']
 //"App\Http\Controllers\CommsController@index"
 // php artisan app:name SocialNet

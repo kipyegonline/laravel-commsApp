@@ -27,7 +27,7 @@ $response = new Response('Hello World');
 $response->withCookie(cookie('jules', 'jules', $minutes));
 
 
-       //echo $request->cookie('jules');
+   
 
        $users = DB::table('comms_departments')->get();
    return view("fetch",["fetch"=>$users,'cookie'=>$response]);
@@ -51,9 +51,118 @@ $response->withCookie(cookie('jules', 'jules', $minutes));
      */
     public function store(Request $request)
     {
-        //
+        //store the posts added by users,
+       
+        $sql="
+  INSERT INTO 
+  comms_posts
+  (
+  clientName,
+  clientEmail, 
+  clientPhone,
+  clientOrg, 
+  message, 
+  subject,  
+  addedBy, 
+  addedon,  
+  altId,
+  status,
+  resolvedby) 
+VALUES
+(:name,
+:email,
+:phone,
+:org,
+:msg,
+:subject,
+:addedby,
+:addedon,
+:altId,
+:status,
+0)";
+
+DB::insert($sql,[
+":name"=>$request->clientName,
+":email"=>$request->clientEmail,
+":phone"=>$request->clientPhone,
+":org"=>$request->clientOrg,
+":msg"=>$request->message,
+":subject"=>$request->subject,
+":addedby"=>$request->addedBy,
+":addedon"=>$request->addedon,
+":altId"=>$request->altId,
+":status"=>$request->status]
+);
+//get post insert id
+$postid=DB::getPdo()->lastInsertId();
+
+if($postid>0){
+    // receive the people and depts concatenated with issues to be handled ,so we split the string to array
+    $userissues=$this->explodeValues("*",$request->handler);
+    $deptissues= $this->explodeValues("*",$request->clientDept);
+   $res;
+/*USERS*/
+// loop the array if array has many users,then add each to DB, else just add the one at index 0
+    if(count($userissues)>1){
+            foreach($userissues as $userissue){
+              $res=  $this->insertpostusers($postid,$userissue);
+            }
+    } else{
+       $res= $this->insertpostusers($postid,$userissues[0]);
     }
 
+    /* DEPTS */
+    if(count($deptissues)>1){
+            foreach($deptissues as $deptissue){
+        $this->insertpostdepts($postid,$deptissue);
+            }
+    } else{
+        $this->insertpostdepts($postid,$deptissues[0]);
+    }
+   
+    $m1=["status"=>200,"msg"=>"Issue created successfully"];
+$m2=["status"=>201,"msg"=>"Something went wrong while  creating issue. Try again later."];
+
+$res >0 ? $feedback=$m1 : $feedback=$m2;
+
+echo \json_encode($feedback);
+}
+
+    } // end of store function
+
+private function explodeValues($delimiter,$array){
+      return explode($delimiter,$array);
+  }
+  private function insertpostusers($postid, $issues){
+  $seen=0;
+  $userIssue=explode("-",$issues);
+
+  $user=(int)$userIssue[0];
+  $issue=(int)$userIssue[1];
+
+  
+$feedback=[];
+
+$query="INSERT INTO comms_posts_users (`post_id`, `user_id`,`issueId`,`seen`,`addedon`, `seenOn`) 
+VALUES(:postid,:userid,:issueId, $seen, NOW(),NULL)";
+$res=DB::insert($query,Array(":postid"=>(int)$postid, ":userid"=>$user, ":issueId"=>$issue));
+return $res;
+}
+
+private function insertpostdepts($postid,$issues){
+     $userIssue=explode("-",$issues);
+
+  $userdept=(int)$userIssue[0];
+  $issue=(int)$userIssue[1];
+
+$query="INSERT INTO comms_posts_dept (`post_id`, `dept_id`,`issueId`, `addedon`) 
+VALUES(:postid,:userdept,:issueId, NOW())";
+$res=DB::insert($query,Array(":postid"=>(int)$postid,":userdept"=>$userdept,":issueId"=>$issue));
+// update the count of issues and departments added 
+$this->updateIssueCount($issue);
+$this->updateDeptCount($userdept);
+
+}
     /**
      * Display the specified resource.
      *
@@ -65,13 +174,30 @@ $response->withCookie(cookie('jules', 'jules', $minutes));
        $q=self::fetchQuery("where b.user_id=:id ORDER BY a.status, a.id desc ");
         $user=DB::select($q,["id"=> $id]);
        
-    return response()->json($user);
+    return response()->json($user)->header("Content-Type","application/json")->withCookie(cookie("user",$id,60));
         //echo json_encode($user);
         
 
         //
     }
 
+private function updateIssueCount($issue){
+$currentCount=DB::table("comms_issues")->where("id",$issue)->value("issueCount");
+$currentCount=$currentCount +1;
+$res=DB::update("update comms_issues set issueCount=$currentCount where id=$issue LIMIT 1");
+
+}
+private function updateDeptCount($dept){
+    $currentCount=DB::table("comms_departments")->where("id",$dept)->value("deptCount");
+ $currentCount=$currentCount +1;
+ $res=DB::update("update comms_departments set deptCount=$currentCount where id=$dept LIMIT 1");
+
+}
+private function countNotifications($id){
+    $query="select count(a.status) as notif from comms_posts a inner join comms_posts_users b on a.id=b.post_id where a.status <1 and b.user_id=$id";
+    $notif=DB::select($query);
+    return $notif[0]->notif;
+}
     /**
      * Show the form for editing the specified resource.
      *
@@ -95,7 +221,8 @@ $response->withCookie(cookie('jules', 'jules', $minutes));
         //
     }
 
-public function ajax($q,$id,$uuid){
+public function ajax(Request $request,$q,$id,$uuid){
+    //echo $request->cookie("user") ? "Jules" : "Vince";
 
     switch ($q) {
         case 'search':
@@ -118,7 +245,7 @@ public function ajax($q,$id,$uuid){
                 $user=DB::select($query);
                 return response()->json($user);
         case "fetchdeptIssues":
-                $query=self::fetchQuery("where b.user_id={$uuid} and b.issueId='{$id}' ORDER BY a.id desc");
+                $query=self::fetchQuery("where b.user_id={$uuid} and b.issueId='{$id}' ");
                 $user=DB::select($query);
                 return response()->json($user);   
         case "fetchdeptusers":
@@ -126,14 +253,24 @@ public function ajax($q,$id,$uuid){
                 $user=DB::select($query);
                 return response()->json($user); 
         case "setticks":
-                $query="UPDATE comms_posts_users set seen=1 where post_id=$id AND  user_id=$uuid LIMIT 1";
+                $query="UPDATE comms_posts_users set seen=1,seenOn=NOW() where post_id=$id AND  user_id=$uuid LIMIT 1";
                 $user=DB::update($query);
                 return response()->json($user); 
         case "issues":
-                $query="select id,issue, altId from comms_issues where userdept=$id";
+            // fix issue count when i start counting
+                $query="select id,issue, altId from comms_issues where userdept=$id   ORDER BY issueCount desc";
                 $issues=DB::select($query);
                 return response()->json($issues); 
+    case "deptusersposts":
+          $query="select * from comms_users where userdept={$id}"; 
+                $users=DB::select($query);
+                return response()->json($users); 
         case "deptusers":
+                $query="select id,username from comms_users where userdept=$id";
+                $issues=DB::select($query);
+                return response()->json($issues); 
+        case "deptsposts":
+            echo "noted";
                 $query="select id,username from comms_users where userdept=$id";
                 $issues=DB::select($query);
                 return response()->json($issues); 
@@ -145,9 +282,14 @@ public function ajax($q,$id,$uuid){
                 $user=DB::select($query);
                 
                 return response()->json($user); 
+        case "fetchpost" :
+           
+            $query=self::fetchQuery("where a.altId='{$id}' AND  b.user_id={$uuid}  ORDER BY a.id desc");
+                $user=DB::select($query);
+                return response()->json($user); 
         case "fetchcomments":
              $id= DB::table('comms_posts')->where('altId', $id)->value('id');
-             
+            
                         $sql=" SELECT 
             a.altId as altId,
             a.post_id as post_id,
@@ -176,9 +318,11 @@ public function ajax($q,$id,$uuid){
                 return response()->json($user); 
         case "fetchRelatedIssues":
         
-                $query="select a.issue as issue ,count(b.post_id) as issuecount, a.id as issueId  from
-            comms_issues a inner join comms_posts_users b on a.id=b.issueId where b.user_id=$id  GROUP BY a.id
-            order by issuecount";
+                $query="select a.issue as issue ,count(b.post_id) as issuecount, a.id as issueId 
+                 from  comms_issues a inner join comms_posts_users b 
+                 on a.id=b.issueId where b.user_id=$id 
+                GROUP BY a.id
+                order by issuecount";
                     
                
                 $user=DB::select($query);
@@ -197,7 +341,8 @@ public function ajax($q,$id,$uuid){
             
              $query="UPDATE comms_posts SET status=$status,resolvedby=$uuid where id=$id LIMIT 1";
             $rows= DB::update($query);
-            echo \json_encode(["status"=>$rows>0 ? 2 :1]);
+            $notif=$this->countNotifications($uuid);
+            echo \json_encode(["status"=>$rows>0 ? 2 :1,"notifications"=>$notif]);
         default:
             # code...
             break;

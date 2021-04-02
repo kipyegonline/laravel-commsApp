@@ -1,4 +1,90 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><title class="jsx-2072288455">Login | Comms App </title><meta name="viewport" content="initial-scale=1.0, width=device-width" class="jsx-2072288455"/><link rel="preload" href="/_next/static/css/a44285c0be289936e289.css" as="style"/><link rel="stylesheet" href="/_next/static/css/a44285c0be289936e289.css" data-n-g=""/><link rel="preload" href="/_next/static/css/a9f011a4ba3f32133959.css" as="style"/><link rel="stylesheet" href="/_next/static/css/a9f011a4ba3f32133959.css" data-n-g=""/><noscript data-n-css="true"></noscript><link rel="preload" href="/_next/static/chunks/main-772905ec7664ffd6bd4b.js" as="script"/><link rel="preload" href="/_next/static/chunks/webpack-e067438c4cf4ef2ef178.js" as="script"/><link rel="preload" href="/_next/static/chunks/framework.bb551a3ede0be723c7fa.js" as="script"/><link rel="preload" href="/_next/static/chunks/7f232eac.b49a158ac8e0abf8851b.js" as="script"/><link rel="preload" href="/_next/static/chunks/f55599ba02521c71f716a82090bbdb2342b9cc6b.9071607a7718133269dc.js" as="script"/><link rel="preload" href="/_next/static/chunks/0a9dea9b09325af273b4b32359c0c22c7a3228a7.2433c2054044ad368d33.js" as="script"/><link rel="preload" href="/_next/static/chunks/0946be66768cd17ceecb4cc1a2948ca0c62a6505.10f0c956746af286b1dc.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/_app-4995460a80ce85e8a2bb.js" as="script"/><link rel="preload" href="/_next/static/chunks/a2ad6018fb7a35801ad9cf4379d45090c05baed9.26f0f20c86a37c4e636a.js" as="script"/><link rel="preload" href="/_next/static/chunks/9e95abdbc5dac7fb4c60c2ec3086f6147d36cf36.66ada5ca843bc8ffd348.js" as="script"/><link rel="preload" href="/_next/static/chunks/3e833acb80c7abed311f487b16a9e99feb23c17e.5be7bd02573be76209a8.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/login-747d557c418f5a63882f.js" as="script"/><style id="__jsx-2072288455">.login.jsx-2072288455{max-width:500px;margin:auto;padding:1rem;background:red;}.login-container.jsx-2072288455{background:#ccc;padding:1rem;margin:3rem auto;border:1px solid red;}</style><style id="jss-server-side">.MuiButtonBase-root {
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><title class="jsx-2072288455">Login | Comms App </title><meta name="viewport" content="initial-scale=1.0, width=device-width" class="jsx-2072288455"/><link rel="preload" href="/_next/static/css/a44285c0be289936e289.css" as="style"/><link rel="stylesheet" href="/_next/static/css/a44285c0be289936e289.css" data-n-g=""/><link rel="preload" href="/_next/static/css/a8de4798f5109758f166.css" as="style"/><link rel="stylesheet" href="/_next/static/css/a8de4798f5109758f166.css" data-n-g=""/><noscript data-n-css="true"></noscript><link rel="preload" href="/_next/static/chunks/main-003f6550f6747adb0f95.js" as="script"/><link rel="preload" href="/_next/static/chunks/webpack-e067438c4cf4ef2ef178.js" as="script"/><link rel="preload" href="/_next/static/chunks/framework.4cb66147a9c8c0fd8872.js" as="script"/><link rel="preload" href="/_next/static/chunks/7f232eac.b49a158ac8e0abf8851b.js" as="script"/><link rel="preload" href="/_next/static/chunks/786efaf75948615d126fd60e953db238a4988f9d.1e370546c0b4c3775e40.js" as="script"/><link rel="preload" href="/_next/static/chunks/9f47940e87c941013b118ae9e211a81ac55ee65b.7cf4a5d3b62f98648abd.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/_app-61d8a49e97ef150a6574.js" as="script"/><link rel="preload" href="/_next/static/chunks/975b08a686e9d3662fa2ef6535ac6fae6e784773.36984cd6e432abadf89a.js" as="script"/><link rel="preload" href="/_next/static/chunks/f5bc3065f20d313583588d78742bc528c21e448f.aaf2d5a65edafae88351.js" as="script"/><link rel="preload" href="/_next/static/chunks/187adeb9c8aa80694d0bea01099dcb2eb0179025.91e86cffedd2bdc6bf1a.js" as="script"/><link rel="preload" href="/_next/static/chunks/bcf9915e5d3a989aa8b669cda631e77e6bced396.c7e15f3a497fe2e12780.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/login-c39a334384c73a9965ad.js" as="script"/><style id="__jsx-2072288455">.login.jsx-2072288455{max-width:500px;margin:auto;padding:1rem;background:red;}.login-container.jsx-2072288455{background:#ccc;padding:1rem;margin:3rem auto;border:1px solid red;}</style><style id="jss-server-side">.MuiPaper-root {
+  color: rgba(0, 0, 0, 0.87);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  background-color: #fff;
+}
+.MuiPaper-rounded {
+  border-radius: 4px;
+}
+.MuiPaper-outlined {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+.MuiPaper-elevation0 {
+  box-shadow: none;
+}
+.MuiPaper-elevation1 {
+  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation2 {
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation3 {
+  box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation4 {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation5 {
+  box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 5px 8px 0px rgba(0,0,0,0.14),0px 1px 14px 0px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation6 {
+  box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation7 {
+  box-shadow: 0px 4px 5px -2px rgba(0,0,0,0.2),0px 7px 10px 1px rgba(0,0,0,0.14),0px 2px 16px 1px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation8 {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation9 {
+  box-shadow: 0px 5px 6px -3px rgba(0,0,0,0.2),0px 9px 12px 1px rgba(0,0,0,0.14),0px 3px 16px 2px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation10 {
+  box-shadow: 0px 6px 6px -3px rgba(0,0,0,0.2),0px 10px 14px 1px rgba(0,0,0,0.14),0px 4px 18px 3px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation11 {
+  box-shadow: 0px 6px 7px -4px rgba(0,0,0,0.2),0px 11px 15px 1px rgba(0,0,0,0.14),0px 4px 20px 3px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation12 {
+  box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.2),0px 12px 17px 2px rgba(0,0,0,0.14),0px 5px 22px 4px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation13 {
+  box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.2),0px 13px 19px 2px rgba(0,0,0,0.14),0px 5px 24px 4px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation14 {
+  box-shadow: 0px 7px 9px -4px rgba(0,0,0,0.2),0px 14px 21px 2px rgba(0,0,0,0.14),0px 5px 26px 4px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation15 {
+  box-shadow: 0px 8px 9px -5px rgba(0,0,0,0.2),0px 15px 22px 2px rgba(0,0,0,0.14),0px 6px 28px 5px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation16 {
+  box-shadow: 0px 8px 10px -5px rgba(0,0,0,0.2),0px 16px 24px 2px rgba(0,0,0,0.14),0px 6px 30px 5px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation17 {
+  box-shadow: 0px 8px 11px -5px rgba(0,0,0,0.2),0px 17px 26px 2px rgba(0,0,0,0.14),0px 6px 32px 5px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation18 {
+  box-shadow: 0px 9px 11px -5px rgba(0,0,0,0.2),0px 18px 28px 2px rgba(0,0,0,0.14),0px 7px 34px 6px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation19 {
+  box-shadow: 0px 9px 12px -6px rgba(0,0,0,0.2),0px 19px 29px 2px rgba(0,0,0,0.14),0px 7px 36px 6px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation20 {
+  box-shadow: 0px 10px 13px -6px rgba(0,0,0,0.2),0px 20px 31px 3px rgba(0,0,0,0.14),0px 8px 38px 7px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation21 {
+  box-shadow: 0px 10px 13px -6px rgba(0,0,0,0.2),0px 21px 33px 3px rgba(0,0,0,0.14),0px 8px 40px 7px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation22 {
+  box-shadow: 0px 10px 14px -6px rgba(0,0,0,0.2),0px 22px 35px 3px rgba(0,0,0,0.14),0px 8px 42px 7px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation23 {
+  box-shadow: 0px 11px 14px -7px rgba(0,0,0,0.2),0px 23px 36px 3px rgba(0,0,0,0.14),0px 9px 44px 8px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation24 {
+  box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12);
+}
+.MuiButtonBase-root {
   color: inherit;
   border: 0;
   cursor: pointer;
@@ -30,92 +116,6 @@
     color-adjust: exact;
   }
 }
-  .MuiPaper-root {
-    color: rgba(0, 0, 0, 0.87);
-    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    background-color: #fff;
-  }
-  .MuiPaper-rounded {
-    border-radius: 4px;
-  }
-  .MuiPaper-outlined {
-    border: 1px solid rgba(0, 0, 0, 0.12);
-  }
-  .MuiPaper-elevation0 {
-    box-shadow: none;
-  }
-  .MuiPaper-elevation1 {
-    box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
-  }
-  .MuiPaper-elevation2 {
-    box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  }
-  .MuiPaper-elevation3 {
-    box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);
-  }
-  .MuiPaper-elevation4 {
-    box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
-  }
-  .MuiPaper-elevation5 {
-    box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 5px 8px 0px rgba(0,0,0,0.14),0px 1px 14px 0px rgba(0,0,0,0.12);
-  }
-  .MuiPaper-elevation6 {
-    box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);
-  }
-  .MuiPaper-elevation7 {
-    box-shadow: 0px 4px 5px -2px rgba(0,0,0,0.2),0px 7px 10px 1px rgba(0,0,0,0.14),0px 2px 16px 1px rgba(0,0,0,0.12);
-  }
-  .MuiPaper-elevation8 {
-    box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
-  }
-  .MuiPaper-elevation9 {
-    box-shadow: 0px 5px 6px -3px rgba(0,0,0,0.2),0px 9px 12px 1px rgba(0,0,0,0.14),0px 3px 16px 2px rgba(0,0,0,0.12);
-  }
-  .MuiPaper-elevation10 {
-    box-shadow: 0px 6px 6px -3px rgba(0,0,0,0.2),0px 10px 14px 1px rgba(0,0,0,0.14),0px 4px 18px 3px rgba(0,0,0,0.12);
-  }
-  .MuiPaper-elevation11 {
-    box-shadow: 0px 6px 7px -4px rgba(0,0,0,0.2),0px 11px 15px 1px rgba(0,0,0,0.14),0px 4px 20px 3px rgba(0,0,0,0.12);
-  }
-  .MuiPaper-elevation12 {
-    box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.2),0px 12px 17px 2px rgba(0,0,0,0.14),0px 5px 22px 4px rgba(0,0,0,0.12);
-  }
-  .MuiPaper-elevation13 {
-    box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.2),0px 13px 19px 2px rgba(0,0,0,0.14),0px 5px 24px 4px rgba(0,0,0,0.12);
-  }
-  .MuiPaper-elevation14 {
-    box-shadow: 0px 7px 9px -4px rgba(0,0,0,0.2),0px 14px 21px 2px rgba(0,0,0,0.14),0px 5px 26px 4px rgba(0,0,0,0.12);
-  }
-  .MuiPaper-elevation15 {
-    box-shadow: 0px 8px 9px -5px rgba(0,0,0,0.2),0px 15px 22px 2px rgba(0,0,0,0.14),0px 6px 28px 5px rgba(0,0,0,0.12);
-  }
-  .MuiPaper-elevation16 {
-    box-shadow: 0px 8px 10px -5px rgba(0,0,0,0.2),0px 16px 24px 2px rgba(0,0,0,0.14),0px 6px 30px 5px rgba(0,0,0,0.12);
-  }
-  .MuiPaper-elevation17 {
-    box-shadow: 0px 8px 11px -5px rgba(0,0,0,0.2),0px 17px 26px 2px rgba(0,0,0,0.14),0px 6px 32px 5px rgba(0,0,0,0.12);
-  }
-  .MuiPaper-elevation18 {
-    box-shadow: 0px 9px 11px -5px rgba(0,0,0,0.2),0px 18px 28px 2px rgba(0,0,0,0.14),0px 7px 34px 6px rgba(0,0,0,0.12);
-  }
-  .MuiPaper-elevation19 {
-    box-shadow: 0px 9px 12px -6px rgba(0,0,0,0.2),0px 19px 29px 2px rgba(0,0,0,0.14),0px 7px 36px 6px rgba(0,0,0,0.12);
-  }
-  .MuiPaper-elevation20 {
-    box-shadow: 0px 10px 13px -6px rgba(0,0,0,0.2),0px 20px 31px 3px rgba(0,0,0,0.14),0px 8px 38px 7px rgba(0,0,0,0.12);
-  }
-  .MuiPaper-elevation21 {
-    box-shadow: 0px 10px 13px -6px rgba(0,0,0,0.2),0px 21px 33px 3px rgba(0,0,0,0.14),0px 8px 40px 7px rgba(0,0,0,0.12);
-  }
-  .MuiPaper-elevation22 {
-    box-shadow: 0px 10px 14px -6px rgba(0,0,0,0.2),0px 22px 35px 3px rgba(0,0,0,0.14),0px 8px 42px 7px rgba(0,0,0,0.12);
-  }
-  .MuiPaper-elevation23 {
-    box-shadow: 0px 11px 14px -7px rgba(0,0,0,0.2),0px 23px 36px 3px rgba(0,0,0,0.14),0px 9px 44px 8px rgba(0,0,0,0.12);
-  }
-  .MuiPaper-elevation24 {
-    box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12);
-  }
   .MuiTypography-root {
     margin: 0;
   }
@@ -1286,81 +1286,6 @@
   .MuiInputLabel-outlined.MuiInputLabel-shrink {
     transform: translate(14px, -6px) scale(0.75);
   }
-  .MuiSnackbar-root {
-    left: 8px;
-    right: 8px;
-    display: flex;
-    z-index: 1400;
-    position: fixed;
-    align-items: center;
-    justify-content: center;
-  }
-  .MuiSnackbar-anchorOriginTopCenter {
-    top: 8px;
-  }
-@media (min-width:600px) {
-  .MuiSnackbar-anchorOriginTopCenter {
-    top: 24px;
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-  }
-}
-  .MuiSnackbar-anchorOriginBottomCenter {
-    bottom: 8px;
-  }
-@media (min-width:600px) {
-  .MuiSnackbar-anchorOriginBottomCenter {
-    left: 50%;
-    right: auto;
-    bottom: 24px;
-    transform: translateX(-50%);
-  }
-}
-  .MuiSnackbar-anchorOriginTopRight {
-    top: 8px;
-    justify-content: flex-end;
-  }
-@media (min-width:600px) {
-  .MuiSnackbar-anchorOriginTopRight {
-    top: 24px;
-    left: auto;
-    right: 24px;
-  }
-}
-  .MuiSnackbar-anchorOriginBottomRight {
-    bottom: 8px;
-    justify-content: flex-end;
-  }
-@media (min-width:600px) {
-  .MuiSnackbar-anchorOriginBottomRight {
-    left: auto;
-    right: 24px;
-    bottom: 24px;
-  }
-}
-  .MuiSnackbar-anchorOriginTopLeft {
-    top: 8px;
-    justify-content: flex-start;
-  }
-@media (min-width:600px) {
-  .MuiSnackbar-anchorOriginTopLeft {
-    top: 24px;
-    left: 24px;
-    right: auto;
-  }
-}
-  .MuiSnackbar-anchorOriginBottomLeft {
-    bottom: 8px;
-    justify-content: flex-start;
-  }
-@media (min-width:600px) {
-  .MuiSnackbar-anchorOriginBottomLeft {
-    left: 24px;
-    right: auto;
-    bottom: 24px;
-  }
-}
   .jss1 {
     margin: 3rem auto;
     padding: 1.3rem;
@@ -1381,4 +1306,4 @@
     width: 80%;
     margin: .5rem auto;
     display: block;
-  }</style></head><body><div id="__next"><div class="MuiGrid-root jss2"><div class="MuiPaper-root MuiCard-root jss1 MuiPaper-elevation10 MuiPaper-rounded"><h5 class="MuiTypography-root MuiTypography-h5 MuiTypography-alignCenter">Customer care manager Portal</h5><hr class="MuiDivider-root"/><form class="jsx-2072288455"><div class="MuiCardContent-root" style="max-width:500px"><div class="MuiFormControl-root jss3"><label class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated" data-shrink="false">Email </label><div class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"><input type="email" aria-invalid="false" name="Email" class="MuiInputBase-input MuiInput-input"/></div></div><div class="MuiFormControl-root jss3"><label class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated" data-shrink="false">Password </label><div class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"><input type="password" aria-invalid="false" name="Password" class="MuiInputBase-input MuiInput-input"/></div></div></div><div class="MuiCardActions-root MuiCardActions-spacing"><button class="MuiButtonBase-root MuiButton-root MuiButton-contained jss3 MuiButton-containedPrimary" tabindex="0" type="submit"><span class="MuiButton-label">Log in</span></button></div></form></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{}},"page":"/login","query":{},"buildId":"Oq5KEwzd9j9TsvjxlmJCn","nextExport":true,"autoExport":true,"isFallback":false,"head":[["meta",{"charSet":"utf-8"}],["title",{"className":"jsx-2072288455","children":"Login | Comms App "}],["meta",{"name":"viewport","content":"initial-scale=1.0, width=device-width","className":"jsx-2072288455"}]]}</script><script nomodule="" src="/_next/static/chunks/polyfills-7c72805108ebcf695117.js"></script><script src="/_next/static/chunks/main-772905ec7664ffd6bd4b.js" async=""></script><script src="/_next/static/chunks/webpack-e067438c4cf4ef2ef178.js" async=""></script><script src="/_next/static/chunks/framework.bb551a3ede0be723c7fa.js" async=""></script><script src="/_next/static/chunks/7f232eac.b49a158ac8e0abf8851b.js" async=""></script><script src="/_next/static/chunks/f55599ba02521c71f716a82090bbdb2342b9cc6b.9071607a7718133269dc.js" async=""></script><script src="/_next/static/chunks/0a9dea9b09325af273b4b32359c0c22c7a3228a7.2433c2054044ad368d33.js" async=""></script><script src="/_next/static/chunks/0946be66768cd17ceecb4cc1a2948ca0c62a6505.10f0c956746af286b1dc.js" async=""></script><script src="/_next/static/chunks/pages/_app-4995460a80ce85e8a2bb.js" async=""></script><script src="/_next/static/chunks/a2ad6018fb7a35801ad9cf4379d45090c05baed9.26f0f20c86a37c4e636a.js" async=""></script><script src="/_next/static/chunks/9e95abdbc5dac7fb4c60c2ec3086f6147d36cf36.66ada5ca843bc8ffd348.js" async=""></script><script src="/_next/static/chunks/3e833acb80c7abed311f487b16a9e99feb23c17e.5be7bd02573be76209a8.js" async=""></script><script src="/_next/static/chunks/pages/login-747d557c418f5a63882f.js" async=""></script><script src="/_next/static/Oq5KEwzd9j9TsvjxlmJCn/_buildManifest.js" async=""></script><script src="/_next/static/Oq5KEwzd9j9TsvjxlmJCn/_ssgManifest.js" async=""></script></body></html>
+  }</style></head><body><div id="__next"><div class="MuiGrid-root jss2"><div class="MuiPaper-root MuiCard-root jss1 MuiPaper-elevation10 MuiPaper-rounded"><h5 class="MuiTypography-root MuiTypography-h5 MuiTypography-alignCenter">Customer care manager Portal</h5><hr class="MuiDivider-root"/><form class="jsx-2072288455"><div class="MuiCardContent-root" style="max-width:500px"><div class="MuiFormControl-root jss3"><label class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated" data-shrink="false">Email </label><div class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"><input type="email" aria-invalid="false" name="Email" class="MuiInputBase-input MuiInput-input"/></div></div><div class="MuiFormControl-root jss3"><label class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated" data-shrink="false">Password </label><div class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"><input type="password" aria-invalid="false" name="Password" class="MuiInputBase-input MuiInput-input"/></div></div></div><div class="MuiCardActions-root MuiCardActions-spacing"><button class="MuiButtonBase-root MuiButton-root MuiButton-contained jss3 MuiButton-containedPrimary" tabindex="0" type="submit"><span class="MuiButton-label">Log in</span></button></div><p class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"><a class="jsx-2072288455" href="/reset-password">Forgot password </a></p></form></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{}},"page":"/login","query":{},"buildId":"mTD8DKI41s2gGYTl2KEUj","nextExport":true,"autoExport":true,"isFallback":false,"head":[["meta",{"charSet":"utf-8"}],["title",{"className":"jsx-2072288455","children":"Login | Comms App "}],["meta",{"name":"viewport","content":"initial-scale=1.0, width=device-width","className":"jsx-2072288455"}]]}</script><script nomodule="" src="/_next/static/chunks/polyfills-0055af750d9c83eceb2a.js"></script><script src="/_next/static/chunks/main-003f6550f6747adb0f95.js" async=""></script><script src="/_next/static/chunks/webpack-e067438c4cf4ef2ef178.js" async=""></script><script src="/_next/static/chunks/framework.4cb66147a9c8c0fd8872.js" async=""></script><script src="/_next/static/chunks/7f232eac.b49a158ac8e0abf8851b.js" async=""></script><script src="/_next/static/chunks/786efaf75948615d126fd60e953db238a4988f9d.1e370546c0b4c3775e40.js" async=""></script><script src="/_next/static/chunks/9f47940e87c941013b118ae9e211a81ac55ee65b.7cf4a5d3b62f98648abd.js" async=""></script><script src="/_next/static/chunks/pages/_app-61d8a49e97ef150a6574.js" async=""></script><script src="/_next/static/chunks/975b08a686e9d3662fa2ef6535ac6fae6e784773.36984cd6e432abadf89a.js" async=""></script><script src="/_next/static/chunks/f5bc3065f20d313583588d78742bc528c21e448f.aaf2d5a65edafae88351.js" async=""></script><script src="/_next/static/chunks/187adeb9c8aa80694d0bea01099dcb2eb0179025.91e86cffedd2bdc6bf1a.js" async=""></script><script src="/_next/static/chunks/bcf9915e5d3a989aa8b669cda631e77e6bced396.c7e15f3a497fe2e12780.js" async=""></script><script src="/_next/static/chunks/pages/login-c39a334384c73a9965ad.js" async=""></script><script src="/_next/static/mTD8DKI41s2gGYTl2KEUj/_buildManifest.js" async=""></script><script src="/_next/static/mTD8DKI41s2gGYTl2KEUj/_ssgManifest.js" async=""></script></body></html>
